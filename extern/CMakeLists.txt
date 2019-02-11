@@ -1,22 +1,26 @@
 cmake_minimum_required(VERSION 3.2)
 
-# Find core module.
-find_path(OVE_CORE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/OmniVerse-Engine-Core/src PARENT_SCOPE)
+# OVE_Core submodule
+set(OVE_CORE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/OmniVerse-Engine-Core)
+if(EXISTS ${OVE_CORE_DIR})
 
-if((NOT OVE_CORE_INCLUDE_DIR) OR (NOT EXISTS ${OVE_CORE_INCLUDE_DIR}))
-    # Couldn't find the files for the core module or they don't exist.
-    message("Unable to find core module.")
-
-    # Clone core git submodule.
-    execute_process(COMMAND git submodule update --init -- OmniVerse-Engine-Core
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-
-    # Set OVE_CORE_INCLUDE_DIR properly
-    set(OVE_CORE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/OmniVerse-Engine-Core/src PARENT_SCOPE)
-
-    add_subdirectory(OmniVerse-Engine-Core)
+    message("Updating core module ...")
+    execute_process(COMMAND git pull origin master
+        WORKING_DIRECTORY ${OVE_CORE_DIR})
+    message("Core module updated.")
 
 else()
-    # Found core module.
-    message("Found core module.")
+
+    message("Initializing core module ...")
+    execute_process(COMMAND git submodule add https://github.com/VIGameStudio/OmniVerse-Engine-Core.git
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    execute_process(COMMAND git submodule update --init --recursive OmniVerse-Engine-Core
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    message("Core module initialized.")
+
 endif()
+
+set(OVE_CORE_BUILD_DEMO OFF CACHE BOOL "enable X functionality" FORCE)
+set(OVE_CORE_BUILD_TEST OFF CACHE BOOL "enable X functionality" FORCE)
+add_subdirectory(OmniVerse-Engine-Core)
+set(OVE_CORE_INCLUDE_DIR ${OVE_CORE_DIR}/src PARENT_SCOPE)
