@@ -4,5 +4,5 @@
 class interpolation
 {
 public:
-    void print() { std::cout << "kjhgkjhg"; }
+	void print() { std::cout << "kjhgkjhg"; }
 };

@@ -2,17 +2,17 @@
 
 #include <ove/core/util/types.hpp>
 
-namespace math {
-using namespace core;
+namespace ove {
+	namespace math {
+		template <typename T> struct frustum_t;
+		using frustumf = frustum_t<core::f32>;
+		using frustumd = frustum_t<core::f64>;
 
-template <typename T> struct frustum_t;
-using frustumf = frustum_t<f32>;
-using frustumd = frustum_t<f64>;
-
-template <typename R> struct frustum_t {
-  using real = R;
-  real left, right;
-  real top, bottom;
-  real near, far;
-};
+		template <typename R> struct frustum_t {
+			using real = R;
+			real left, right;
+			real top, bottom;
+			real near, far;
+		};
+	}
 }
