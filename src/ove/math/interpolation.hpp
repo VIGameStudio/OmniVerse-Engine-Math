@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-class interpolation
+struct interpolation
 {
 public:
 	void print() { std::cout << "kjhgkjhg"; }

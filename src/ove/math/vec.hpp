@@ -11,33 +11,33 @@ namespace ove {
 		struct vec_t;
 
 		template <typename R>
-		using vec1 = vec_t<R, 1u>;
+		using vec1_t = vec_t<R, 1u>;
 
-		using vec1u = vec1<core::u32>;
-		using vec1i = vec1<core::i32>;
-		using vec1f = vec1<core::f32>;
-		using vec1d = vec1<core::f64>;
-
-		template <typename R>
-		using vec2 = vec_t<R, 2u>;
-		using vec2u = vec2<core::u32>;
-		using vec2i = vec2<core::i32>;
-		using vec2f = vec2<core::f32>;
-		using vec2d = vec2<core::f64>;
+		using vec1u_t = vec1_t<core::u32>;
+		using vec1i_t = vec1_t<core::i32>;
+		using vec1f_t = vec1_t<core::f32>;
+		using vec1d_t = vec1_t<core::f64>;
 
 		template <typename R>
-		using vec3 = vec_t<R, 3u>;
-		using vec3u = vec3<core::u32>;
-		using vec3i = vec3<core::i32>;
-		using vec3f = vec3<core::f32>;
-		using vec3d = vec3<core::f64>;
+		using vec2_t = vec_t<R, 2u>;
+		using vec2u_t = vec2_t<core::u32>;
+		using vec2i_t = vec2_t<core::i32>;
+		using vec2f_t = vec2_t<core::f32>;
+		using vec2d_t = vec2_t<core::f64>;
 
 		template <typename R>
-		using vec4 = vec_t<R, 4u>;
-		using vec4u = vec4<core::u32>;
-		using vec4i = vec4<core::i32>;
-		using vec4f = vec4<core::f32>;
-		using vec4d = vec4<core::f64>;
+		using vec3_t = vec_t<R, 3u>;
+		using vec3u_t = vec3_t<core::u32>;
+		using vec3i_t = vec3_t<core::i32>;
+		using vec3f_t = vec3_t<core::f32>;
+		using vec3d_t = vec3_t<core::f64>;
+
+		template <typename R>
+		using vec4_t = vec_t<R, 4u>;
+		using vec4u_t = vec4_t<core::u32>;
+		using vec4i_t = vec4_t<core::i32>;
+		using vec4f_t = vec4_t<core::f32>;
+		using vec4d_t = vec4_t<core::f64>;
 
 		template <typename R, core::u8 D>
 		struct vec_t {

@@ -8,40 +8,40 @@ namespace ove {
 		template <typename R, core::u8 N, core::u8 M> struct mat_t;
 
 		template <typename R> using mat2_t = mat_t<R, 2u, 2u>;
-		using mat2u = mat2_t<core::u32>;
-		using mat2i = mat2_t<core::i32>;
-		using mat2f = mat2_t<core::f32>;
-		using mat2d = mat2_t<core::f64>;
+		using mat2u_t = mat2_t<core::u32>;
+		using mat2i_t = mat2_t<core::i32>;
+		using mat2f_t = mat2_t<core::f32>;
+		using mat2d_t = mat2_t<core::f64>;
 
 		template <typename R> using mat2x1_t = mat_t<R, 2u, 1u>;
-		using mat2x1u = mat2x1_t<core::u32>;
-		using mat2x1i = mat2x1_t<core::i32>;
-		using mat2x1f = mat2x1_t<core::f32>;
-		using mat2x1d = mat2x1_t<core::f64>;
+		using mat2x1u_t = mat2x1_t<core::u32>;
+		using mat2x1i_t = mat2x1_t<core::i32>;
+		using mat2x1f_t = mat2x1_t<core::f32>;
+		using mat2x1d_t = mat2x1_t<core::f64>;
 
 		template <typename R> using mat3_t = mat_t<R, 3u, 3u>;
-		using mat3u = mat3_t<core::u32>;
-		using mat3i = mat3_t<core::i32>;
-		using mat3f = mat3_t<core::f32>;
-		using mat3d = mat3_t<core::f64>;
+		using mat3u_t = mat3_t<core::u32>;
+		using mat3i_t = mat3_t<core::i32>;
+		using mat3f_t = mat3_t<core::f32>;
+		using mat3d_t = mat3_t<core::f64>;
 
 		template <typename R> using mat3x2_t = mat_t<R, 3u, 2u>;
-		using mat3x2u = mat3x2_t<core::u32>;
-		using mat3x2i = mat3x2_t<core::i32>;
-		using mat3x2f = mat3x2_t<core::f32>;
-		using mat3x2d = mat3x2_t<core::f64>;
+		using mat3x2u_t = mat3x2_t<core::u32>;
+		using mat3x2i_t = mat3x2_t<core::i32>;
+		using mat3x2f_t = mat3x2_t<core::f32>;
+		using mat3x2d_t = mat3x2_t<core::f64>;
 
 		template <typename R> using mat4_t = mat_t<R, 4u, 4u>;
-		using mat4u = mat4_t<core::u32>;
-		using mat4i = mat4_t<core::i32>;
-		using mat4f = mat4_t<core::f32>;
-		using mat4d = mat4_t<core::f64>;
+		using mat4u_t = mat4_t<core::u32>;
+		using mat4i_t = mat4_t<core::i32>;
+		using mat4f_t = mat4_t<core::f32>;
+		using mat4d_t = mat4_t<core::f64>;
 
 		template <typename R> using mat4x3_t = mat_t<R, 4u, 3u>;
-		using mat4x3u = mat4x3_t<core::u32>;
-		using mat4x3i = mat4x3_t<core::i32>;
-		using mat4x3f = mat4x3_t<core::f32>;
-		using mat4x3d = mat4x3_t<core::f64>;
+		using mat4x3u_t = mat4x3_t<core::u32>;
+		using mat4x3i_t = mat4x3_t<core::i32>;
+		using mat4x3f_t = mat4x3_t<core::f32>;
+		using mat4x3d_t = mat4x3_t<core::f64>;
 
 		template <typename R, core::u8 N, core::u8 M>
 		struct mat_t
