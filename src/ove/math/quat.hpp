@@ -7,8 +7,8 @@ namespace ove {
 		template <typename T, core::u8 S> struct vec_t;
 
 		template <typename T> struct quat_t;
-		using quatf_t = quat_t<core::f32>;
-		using quatd_t = quat_t<core::f64>;
+		using quatf = quat_t<core::f32>;
+		using quatd = quat_t<core::f64>;
 
 		template <typename R>
 		struct quat_t : public vec_t<R, 4u>
