@@ -5,8 +5,10 @@
 #include <ove/core/util/assert.hpp>
 #include <ove/core/util/types.hpp>
 
-namespace ove {
-	namespace math {
+namespace ove
+{
+	namespace math
+	{
 		template <typename T, core::u8 S> struct vec_t;
 		template <typename T, core::u8 R, core::u8 C> struct mat_t;
 		template <typename T> struct quat_t;
@@ -25,7 +27,8 @@ namespace ove {
 		template <typename T, core::u8 S>
 		inline vec_t<T, S> operator-(const vec_t<T, S>& l, const vec_t<T, S>& r);
 
-		template <typename T, core::u8 S> inline vec_t<T, S> operator-(const vec_t<T, S>& r);
+		template <typename T, core::u8 S>
+		inline vec_t<T, S> operator-(const vec_t<T, S>& r);
 
 		/**
 		 * Operator *
@@ -51,8 +54,7 @@ namespace ove {
 
 		/// Matrix
 		template <typename T, core::u8 R, core::u8 C>
-		inline mat_t<T, R, C> operator*(const mat_t<T, R, C>& l,
-			const mat_t<T, R, C>& r);
+		inline mat_t<T, R, C> operator*(const mat_t<T, R, C>& l, const mat_t<T, R, C>& r);
 
 		template <typename T, core::u8 R, core::u8 C>
 		inline mat_t<T, R, C> operator*(const mat_t<T, R, C>& l, T& r);
@@ -87,10 +89,12 @@ namespace ove {
 		 */
 
 		 /// Vector
-		template <typename T, core::u8 S> inline vec_t<T, S>& operator*=(vec_t<T, S>& l, T r);
+		template <typename T, core::u8 S>
+		inline vec_t<T, S>& operator*=(vec_t<T, S>& l, T r);
 
 		/// Quaternion
-		template <typename T> inline void operator*=(quat_t<T>& l, const quat_t<T>& r);
+		template <typename T>
+		inline void operator*=(quat_t<T>& l, const quat_t<T>& r);
 
 		/// Matrix
 		template <typename T, core::u8 R, core::u8 C>
@@ -99,7 +103,8 @@ namespace ove {
 		/**
 		 * Operator /=
 		 */
-		template <typename T, core::u8 S> inline vec_t<T, S>& operator/=(vec_t<T, S>& l, T r);
+		template <typename T, core::u8 S>
+		inline vec_t<T, S>& operator/=(vec_t<T, S>& l, T r);
 
 		/**
 		 * Operator ==
@@ -118,32 +123,38 @@ namespace ove {
 		/**
 		 * Absolute values
 		 */
-		template <typename T, core::u8 S> inline vec_t<T, S> abs(const vec_t<T, S>& v);
+		template <typename T, core::u8 S>
+		inline vec_t<T, S> abs(const vec_t<T, S>& v);
 
 		/**
 		 * Length pow
 		 */
-		template <typename T, core::u8 S> inline T lengthPow(const vec_t<T, S>& v, T exp);
+		template <typename T, core::u8 S>
+		inline T lengthPow(const vec_t<T, S>& v, T exp);
 
 		/**
 		 * Length squared
 		 */
-		template <typename T, core::u8 S> inline T lengthSq(const vec_t<T, S>& v);
+		template <typename T, core::u8 S>
+		inline T lengthSq(const vec_t<T, S>& v);
 
 		/**
 		 * Length
 		 */
-		template <typename T, core::u8 S> inline T length(const vec_t<T, S>& v);
+		template <typename T, core::u8 S>
+		inline T length(const vec_t<T, S>& v);
 
 		/**
 		 * Normalize
 		 */
-		template <typename T, core::u8 S> inline void normalize(vec_t<T, S>& v);
+		template <typename T, core::u8 S>
+		inline void normalize(vec_t<T, S>& v);
 
 		/**
 		 * Normalized
 		 */
-		template <typename T, core::u8 S> inline vec_t<T, S> normalized(const vec_t<T, S>& v);
+		template <typename T, core::u8 S>
+		inline vec_t<T, S> normalized(const vec_t<T, S>& v);
 
 		/**
 		 * Dot
@@ -160,7 +171,8 @@ namespace ove {
 		/**
 		 * L.E.R.P
 		 */
-		template <typename T, typename R> inline T lerp(const T& v1, const T& v2, R t);
+		template <typename T, typename R>
+		inline T lerp(const T& v1, const T& v2, R t);
 
 		/**
 		 * Cross
@@ -171,60 +183,65 @@ namespace ove {
 		/**
 		 * Conjugate
 		 */
-		template <typename T> inline void conjugate(quat_t<T>& q);
+		template <typename T>
+		inline void conjugate(quat_t<T>& q);
 
 		/**
 		 * Conjugated
 		 */
-		template <typename T> inline quat_t<T> conjugated(const quat_t<T>& q);
+		template <typename T>
+		inline quat_t<T> conjugated(const quat_t<T>& q);
 
 		/**
 		 * Euler Angles
 		 */
-		template <typename T> inline quat_t<T> eulerAngles(const vec_t<T, 3u>& v);
+		template <typename T>
+		inline quat_t<T> eulerAngles(const vec_t<T, 3u>& v);
 
 		/**
 		 * Axis-Angle
 		 */
-		template <typename T> inline quat_t<T> axisAngle(const vec_t<T, 3u>& v, T a);
+		template <typename T>
+		inline quat_t<T> axisAngle(const vec_t<T, 3u>& v, T a);
 
 		/**
 		 * Matrix transform
 		 */
-		template <typename T> inline mat_t<T, 4u, 4u> translate(const vec_t<T, 3u>& v);
+		template <typename T>
+		inline mat_t<T, 4u, 4u> translate(const vec_t<T, 3u>& v);
 
-		template <typename T> inline mat_t<T, 4u, 4u> rotate(const vec_t<T, 3u>& v);
+		template <typename T>
+		inline mat_t<T, 4u, 4u> rotate(const vec_t<T, 3u>& v);
 
 		template <typename T>
 		inline mat_t<T, 4u, 4u> rotate(T a, const vec_t<T, 3u>& v);
 
-		template <typename T> inline mat_t<T, 4u, 4u> rotate(const quat_t<T>& q);
+		template <typename T>
+		inline mat_t<T, 4u, 4u> rotate(const quat_t<T>& q);
 
-		template <typename T> inline mat_t<T, 4u, 4u> scale(const vec_t<T, 3u>& v);
+		template <typename T>
+		inline mat_t<T, 4u, 4u> scale(const vec_t<T, 3u>& v);
 
-		template <typename T> inline mat_t<T, 4u, 4u> scale(T s);
+		template <typename T>
+		inline mat_t<T, 4u, 4u> scale(T s);
 
 		/**
 		 * Look At
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> lookAt(const vec_t<T, 3u>& eye,
-			const vec_t<T, 3u>& center,
-			const vec_t<T, 3u>& up);
+		inline mat_t<T, 4u, 4u> lookAt(const vec_t<T, 3u>& eye, const vec_t<T, 3u>& center, const vec_t<T, 3u>& up);
 
 		/**
 		 * Orthographic
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> orthographic(T left, T right, T top, T bottom, T near,
-			T far);
+		inline mat_t<T, 4u, 4u> orthographic(T left, T right, T top, T bottom, T near, T far);
 
 		/**
 		 * Frustum
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> frustum(T left, T right, T top, T bottom, T near,
-			T far);
+		inline mat_t<T, 4u, 4u> frustum(T left, T right, T top, T bottom, T near, T far);
 
 		/**
 		 * Perspective
@@ -235,12 +252,14 @@ namespace ove {
 		/**
 		 * Determinant
 		 */
-		template <typename T, core::u8 N> inline T determinant(const mat_t<T, N, N>& m);
+		template <typename T, core::u8 N>
+		inline T determinant(const mat_t<T, N, N>& m);
 
 		/**
 		 * Invert
 		 */
-		template <typename T, core::u8 R, core::u8 C> inline void invert(mat_t<T, R, C>& m);
+		template <typename T, core::u8 R, core::u8 C>
+		inline void invert(mat_t<T, R, C>& m);
 
 		/**
 		 * Inverse
@@ -251,7 +270,8 @@ namespace ove {
 		/**
 		 * Transpose
 		 */
-		template <typename T, core::u8 R, core::u8 C> inline void transpose(mat_t<T, R, C>& m);
+		template <typename T, core::u8 R, core::u8 C>
+		inline void transpose(mat_t<T, R, C>& m);
 
 		/**
 		 * Transposed

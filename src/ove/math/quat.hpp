@@ -2,8 +2,10 @@
 
 #include "impl/vmath_impl.hpp"
 
-namespace ove {
-	namespace math {
+namespace ove
+{
+	namespace math
+	{
 		template <typename T, core::u8 S> struct vec_t;
 
 		template <typename T> struct quat_t;
@@ -15,8 +17,14 @@ namespace ove {
 		{
 			using type = quat_t<R>;
 			using real = R;
-			quat_t() : vec_t<R, 4u>(0, 0, 0, 1) {}
-			quat_t(real x, real y, real z, real w) : vec_t<R, 4u>(x, y, z, w) {}
+
+			quat_t()
+				: vec_t<R, 4u>(0, 0, 0, 1)
+			{}
+
+			quat_t(real x, real y, real z, real w)
+				: vec_t<R, 4u>(x, y, z, w)
+			{}
 		};
 	}
 }

@@ -5,8 +5,10 @@
 
 #include <iostream>
 
-namespace ove {
-	namespace math {
+namespace ove
+{
+	namespace math
+	{
 		template <typename T, core::u8 D>
 		struct vec_t;
 
@@ -40,7 +42,8 @@ namespace ove {
 		using vec4d = vec4_t<core::f64>;
 
 		template <typename R, core::u8 D>
-		struct vec_t {
+		struct vec_t
+		{
 		public:
 			using type = vec_t<R, D>;
 			using real = R;
@@ -75,7 +78,8 @@ namespace ove {
 		};
 
 		template <typename R>
-		struct vec_t<R, 1u> {
+		struct vec_t<R, 1u>
+		{
 		public:
 			using type = vec_t<R, 1u>;
 			using real = R;
@@ -100,9 +104,11 @@ namespace ove {
 
 			inline void operator()(real x) { this->x = x; }
 
-			union {
+			union
+			{
 				real data[Dim];
-				struct {
+				struct
+				{
 					real x;
 				};
 			};
@@ -115,7 +121,8 @@ namespace ove {
 		};
 
 		template <typename R>
-		struct vec_t<R, 2u> {
+		struct vec_t<R, 2u>
+		{
 			using type = vec_t<R, 2u>;
 			using real = R;
 			static const core::u8 Dim = 2u;
@@ -125,10 +132,12 @@ namespace ove {
 				: data{ 0 }
 			{
 			}
+
 			vec_t(real v)
 				: data{ v }
 			{
 			}
+
 			vec_t(real x, real y)
 				: data{ x, y }
 			{
@@ -143,9 +152,11 @@ namespace ove {
 				this->y = y;
 			}
 
-			union {
+			union
+			{
 				real data[Dim];
-				struct {
+				struct
+				{
 					real x;
 					real y;
 				};
@@ -159,7 +170,8 @@ namespace ove {
 		};
 
 		template <typename R>
-		struct vec_t<R, 3u> {
+		struct vec_t<R, 3u>
+		{
 			using type = vec_t<R, 3u>;
 			using real = R;
 			static const core::u8 Dim = 3u;
@@ -169,10 +181,12 @@ namespace ove {
 				: data{ 0 }
 			{
 			}
+
 			vec_t(real v)
 				: data{ v }
 			{
 			}
+
 			vec_t(real x, real y, real z)
 				: data{ x, y, z }
 			{
@@ -188,9 +202,11 @@ namespace ove {
 				this->z = z;
 			}
 
-			union {
+			union
+			{
 				real data[Dim];
-				struct {
+				struct
+				{
 					real x;
 					real y;
 					real z;
@@ -205,7 +221,8 @@ namespace ove {
 		};
 
 		template <typename R>
-		struct vec_t<R, 4u> {
+		struct vec_t<R, 4u>
+		{
 			using type = vec_t<R, 4u>;
 			using real = R;
 			static const core::u8 Dim = 4u;
@@ -215,10 +232,12 @@ namespace ove {
 				: data{ 0 }
 			{
 			}
+
 			vec_t(real v)
 				: data{ v }
 			{
 			}
+
 			vec_t(real x, real y, real z, real w)
 				: data{ x, y, z, w }
 			{
@@ -235,9 +254,11 @@ namespace ove {
 				this->w = w;
 			}
 
-			union {
+			union
+			{
 				real data[Dim];
-				struct {
+				struct
+				{
 					real x;
 					real y;
 					real z;

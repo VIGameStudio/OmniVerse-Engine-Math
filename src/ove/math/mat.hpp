@@ -2,8 +2,10 @@
 
 #include "impl/vmath_impl.hpp"
 
-namespace ove {
-	namespace math {
+namespace ove
+{
+	namespace math
+	{
 		template <typename R, core::u8 D> struct vec_t;
 		template <typename R, core::u8 N, core::u8 M> struct mat_t;
 
@@ -52,25 +54,28 @@ namespace ove {
 			static const core::u8 Cols = M;
 			static const core::u8 Dim = N * M;
 
-			mat_t() {
-				for (u8 i = 0; i < Rows; ++i)
-					for (u8 j = 0; j < Cols; ++j)
-						if (i == j)
-							m[i][j] = 1;
-						else
-							m[i][j] = 0;
+			mat_t()
+			{
+				for (core::u8 i = 0; i < Rows; ++i)
+					for (core::u8 j = 0; j < Cols; ++j)
+						m[i][j] = i == j ? 1 : 0;
 			}
-			mat_t(real v) {
-				for (u8 i = 0; i < Rows; ++i)
-					for (u8 j = 0; j < Cols; ++j)
+
+			mat_t(real v)
+			{
+				for (core::u8 i = 0; i < Rows; ++i)
+					for (core::u8 j = 0; j < Cols; ++j)
 						m[i][j] = v;
 			}
-			mat_t(const real data[Dim]) : data(data) {}
+
+			mat_t(const real data[Dim])
+				: data(data)
+			{}
 
 			inline const real* const vptr() const { return &data[0]; }
 
-			inline const real& operator[](u8 i) const { return data[i]; }
-			inline real& operator[](u8 i) { return data[i]; }
+			inline const real& operator[](core::u8 i) const { return data[i]; }
+			inline real& operator[](core::u8 i) { return data[i]; }
 
 			/*inline void operator()(T v) {
 			  for (u8 i = 0; i < R; ++i)
@@ -79,7 +84,7 @@ namespace ove {
 			}*/
 
 			inline void operator()(const real data[Dim]) {
-				for (u8 i = 0; i < Dim; ++i)
+				for (core::u8 i = 0; i < Dim; ++i)
 					this->data[i] = data[i];
 			}
 

@@ -4,15 +4,18 @@
 
 #include <ove/math/utils.hpp>
 
-namespace ove {
-	namespace math {
+namespace ove
+{
+	namespace math
+	{
 		/// Operators
 
 		/**
 		 * Operator +
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator+(const vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline vec_t<T, S> operator+(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			vec_t<T, S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] + r.data[i];
@@ -23,14 +26,16 @@ namespace ove {
 		 * Operator -
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator-(const vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline vec_t<T, S> operator-(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			vec_t<T, S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] - r.data[i];
 			return res;
 		}
 
-		template <typename T, core::u8 S> inline vec_t<T, S> operator-(const vec_t<T, S>& r) {
+		template <typename T, core::u8 S> inline vec_t<T, S> operator-(const vec_t<T, S>& r)
+		{
 			return vec_t<T, S>(-r.x, -r.y, -r.z);
 		}
 
@@ -40,7 +45,8 @@ namespace ove {
 
 		 /// Vector
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator*(const vec_t<T, S>& l, T r) {
+		inline vec_t<T, S> operator*(const vec_t<T, S>& l, T r)
+		{
 			vec_t<T, S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] * r;
@@ -48,7 +54,8 @@ namespace ove {
 		}
 
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator*(T l, const vec_t<T, S>& r) {
+		inline vec_t<T, S> operator*(T l, const vec_t<T, S>& r)
+		{
 			vec_t<T, S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l * r.data[i];
@@ -56,7 +63,8 @@ namespace ove {
 		}
 
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator*(const vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline vec_t<T, S> operator*(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			vec_t<T, S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] * r.data[i];
@@ -65,8 +73,10 @@ namespace ove {
 
 		/// Quaternion
 		template <typename T>
-		inline quat_t<T> operator*(const quat_t<T>& l, const quat_t<T>& r) {
-			return quat_t<T>(l.w * r.x + l.x * r.w + l.y * r.z - l.z * r.y,
+		inline quat_t<T> operator*(const quat_t<T>& l, const quat_t<T>& r)
+		{
+			return quat_t<T>(
+				l.w * r.x + l.x * r.w + l.y * r.z - l.z * r.y,
 				l.w * r.y + l.y * r.w + l.z * r.x - l.x * r.z,
 				l.w * r.z + l.z * r.w + l.x * r.y - l.y * r.x,
 				l.w * r.w - l.x * r.x - l.y * r.y - l.z * r.z);
@@ -74,8 +84,8 @@ namespace ove {
 
 		/// Matrix
 		template <typename T, core::u8 N>
-		inline mat_t<T, N, N> operator*(const mat_t<T, N, N>& l,
-			const mat_t<T, N, N>& r) {
+		inline mat_t<T, N, N> operator*(const mat_t<T, N, N>& l, const mat_t<T, N, N>& r)
+		{
 			mat_t<T, N, N> res(0.f);
 			for (core::u8 i = 0; i < N; ++i)
 				for (core::u8 j = 0; j < N; ++j)
@@ -85,7 +95,8 @@ namespace ove {
 		}
 
 		template <typename T, core::u8 N>
-		inline mat_t<T, N, N> operator*(mat_t<T, N, N>& l, T r) {
+		inline mat_t<T, N, N> operator*(mat_t<T, N, N>& l, T r)
+		{
 			mat_t<T, N, N> res(0.f);
 			for (core::u8 i = 0; i < N; ++i)
 				for (core::u8 j = 0; j < N; ++j)
@@ -95,7 +106,8 @@ namespace ove {
 
 		/// Matrix - Vector
 		template <typename T, core::u8 N>
-		inline vec_t<T, N> operator*(const mat_t<T, N, N>& l, const vec_t<T, N>& r) {
+		inline vec_t<T, N> operator*(const mat_t<T, N, N>& l, const vec_t<T, N>& r)
+		{
 			vec_t<T, N> res(0.f);
 			for (core::u8 i = 0; i < N; ++i)
 				for (core::u8 j = 0; j < N; ++j)
@@ -105,7 +117,8 @@ namespace ove {
 
 		/// Quaternion - Vector
 		template <typename T>
-		inline vec_t<T, 3u> operator*(const quat_t<T>& l, const vec_t<T, 3u>& r) {
+		inline vec_t<T, 3u> operator*(const quat_t<T>& l, const vec_t<T, 3u>& r)
+		{
 			const vec_t<T, 3u> q(l.x, l.y, l.z);
 			const vec_t<T, 3u> t = (T)2 * cross(r, q);
 			return r + l.w * t + cross(t, q);
@@ -115,7 +128,8 @@ namespace ove {
 		 * Operator /
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator/(const vec_t<T, S>& l, T r) {
+		inline vec_t<T, S> operator/(const vec_t<T, S>& l, T r)
+		{
 			ASSERT(r != 0);
 
 			const T ir = 1.0 / r;
@@ -126,7 +140,8 @@ namespace ove {
 		}
 
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator/(T l, const vec_t<T, S>& r) {
+		inline vec_t<T, S> operator/(T l, const vec_t<T, S>& r)
+		{
 			ASSERT(l != 0);
 
 			vec_t<T, S> res;
@@ -139,7 +154,8 @@ namespace ove {
 		 * Operator +=
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S>& operator+=(vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline vec_t<T, S>& operator+=(vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			for (core::u8 i = 0; i < S; ++i)
 				l.data[i] += r.data[i];
 			return l;
@@ -149,7 +165,8 @@ namespace ove {
 		 * Operator -=
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S>& operator-=(vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline vec_t<T, S>& operator-=(vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			for (core::u8 i = 0; i < S; ++i)
 				l.data[i] -= r.data[i];
 			return l;
@@ -161,14 +178,17 @@ namespace ove {
 
 		 /// Vector
 		template <typename T, core::u8 S>
-		inline vec_t<T, S>& operator*=(vec_t<T, S>& l, T r) {
+		inline vec_t<T, S>& operator*=(vec_t<T, S>& l, T r)
+		{
 			for (core::u8 i = 0; i < S; ++i)
 				l.data[i] *= r;
 			return l;
 		}
 
 		/// Quaternion
-		template <typename T> inline void operator*=(quat_t<T>& l, const quat_t<T>& r) {
+		template <typename T>
+		inline void operator*=(quat_t<T>& l, const quat_t<T>& r)
+		{
 			l.x = l.w * r.x + l.x * r.w + l.y * r.z - l.z * r.y;
 			l.y = l.w * r.y + l.y * r.w + l.z * r.x - l.x * r.z;
 			l.z = l.w * r.z + l.z * r.w + l.x * r.y - l.y * r.x;
@@ -176,7 +196,9 @@ namespace ove {
 		}
 
 		/// Matrix
-		template <typename T, core::u8 N> inline void operator*=(mat_t<T, N, N>& l, T r) {
+		template <typename T, core::u8 N>
+		inline void operator*=(mat_t<T, N, N>& l, T r)
+		{
 			for (core::u8 i = 0; i < N; ++i)
 				for (core::u8 j = 0; j < N; ++j)
 					l.m[i][j] *= r;
@@ -186,7 +208,8 @@ namespace ove {
 		 * Operator /=
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S>& operator/=(vec_t<T, S>& l, T r) {
+		inline vec_t<T, S>& operator/=(vec_t<T, S>& l, T r)
+		{
 			ASSERT(r != 0);
 
 			const T ir = 1.0 / r;
@@ -199,7 +222,8 @@ namespace ove {
 		 * Operator ==
 		 */
 		template <typename T, core::u8 S>
-		inline bool operator==(const vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline bool operator==(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			for (core::u8 i = 0; i < S; ++i)
 				if (l.data[i] != r.data[i])
 					return false;
@@ -210,7 +234,8 @@ namespace ove {
 		 * Operator !=
 		 */
 		template <typename T, core::u8 S>
-		inline bool operator!=(const vec_t<T, S>& l, const vec_t<T, S>& r) {
+		inline bool operator!=(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		{
 			for (core::u8 i = 0; i < S; ++i)
 				if (l.data[i] == r.data[i])
 					return false;
@@ -222,7 +247,9 @@ namespace ove {
 		/**
 		 * Absolute values
 		 */
-		template <typename T, core::u8 S> inline vec_t<T, S> abs(const vec_t<T, S>& v) {
+		template <typename T, core::u8 S>
+		inline vec_t<T, S> abs(const vec_t<T, S>& v)
+		{
 			auto tmp = v;
 			for (core::u8 i = 0; i < S; ++i)
 				tmp.data[i] = std::abs(v.data[i]);
@@ -232,7 +259,9 @@ namespace ove {
 		/**
 		 * Length pow
 		 */
-		template <typename T, core::u8 S> inline T lengthPow(const vec_t<T, S>& v, T exp) {
+		template <typename T, core::u8 S>
+		inline T lengthPow(const vec_t<T, S>& v, T exp)
+		{
 			T lenSq = 0;
 			for (core::u8 i = 0; i < S; ++i)
 				lenSq += std::pow(v.data[i], exp);
@@ -242,7 +271,9 @@ namespace ove {
 		/**
 		 * Length squared
 		 */
-		template <typename T, core::u8 S> inline T lengthSq(const vec_t<T, S>& v) {
+		template <typename T, core::u8 S>
+		inline T lengthSq(const vec_t<T, S>& v)
+		{
 			T lenSq = 0;
 			for (core::u8 i = 0; i < S; ++i)
 				lenSq += v.data[i] * v.data[i];
@@ -252,14 +283,18 @@ namespace ove {
 		/**
 		 * Length
 		 */
-		template <typename T, core::u8 S> inline T length(const vec_t<T, S>& v) {
+		template <typename T, core::u8 S>
+		inline T length(const vec_t<T, S>& v)
+		{
 			return std::sqrt(lengthSq(v));
 		}
 
 		/**
 		 * Normalize
 		 */
-		template <typename T, core::u8 S> inline void normalize(vec_t<T, S>& v) {
+		template <typename T, core::u8 S>
+		inline void normalize(vec_t<T, S>& v)
+		{
 			const auto len = length(v);
 			ASSERT(len != 0 && "Division by zero!");
 			v /= len;
@@ -269,7 +304,8 @@ namespace ove {
 		 * Normalized
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> normalized(const vec_t<T, S>& v) {
+		inline vec_t<T, S> normalized(const vec_t<T, S>& v)
+		{
 			auto tmp = v;
 			normalize(tmp);
 			return tmp;
@@ -279,7 +315,8 @@ namespace ove {
 		 * Dot
 		 */
 		template <typename T, core::u8 S>
-		inline T dot(const vec_t<T, S>& v1, const vec_t<T, S>& v2) {
+		inline T dot(const vec_t<T, S>& v1, const vec_t<T, S>& v2)
+		{
 			T tmp = 0;
 			for (core::u8 i = 0; i < S; ++i)
 				tmp += v1.data[i] * v2.data[i];
@@ -290,7 +327,8 @@ namespace ove {
 		 * Project
 		 */
 		template <typename T, core::u8 S>
-		inline vec_t<T, S> project(const vec_t<T, S>& v1, const vec_t<T, S>& v2) {
+		inline vec_t<T, S> project(const vec_t<T, S>& v1, const vec_t<T, S>& v2)
+		{
 			const auto pv = normalized(v2);
 			return pv * dot(v1, pv);
 		}
@@ -298,7 +336,9 @@ namespace ove {
 		/**
 		 * L.E.R.P
 		 */
-		template <typename T, typename R> inline T lerp(const T& v1, const T& v2, R t) {
+		template <typename T, typename R>
+		inline T lerp(const T& v1, const T& v2, R t)
+		{
 			return v1 + (v2 - v1) * t;
 		}
 
@@ -306,16 +346,17 @@ namespace ove {
 		 * Cross
 		 */
 		template <typename T>
-		inline vec_t<T, 3u> cross(const vec_t<T, 3u>& v1, const vec_t<T, 3u>& v2) {
-			auto tmp = vec_t<T, 3u>(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z,
-				v1.x * v2.y - v1.y * v2.x);
-			return tmp;
+		inline vec_t<T, 3u> cross(const vec_t<T, 3u>& v1, const vec_t<T, 3u>& v2)
+		{
+			return vec_t<T, 3u>(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
 		}
 
 		/**
 		 * Conjugate
 		 */
-		template <typename T> inline void conjugate(quat_t<T>& q) {
+		template <typename T>
+		inline void conjugate(quat_t<T>& q)
+		{
 			q.x = -q.x;
 			q.y = -q.y;
 			q.z = -q.z;
@@ -324,7 +365,9 @@ namespace ove {
 		/**
 		 * Conjugated
 		 */
-		template <typename T> inline quat_t<T> conjugated(const quat_t<T>& q) {
+		template <typename T>
+		inline quat_t<T> conjugated(const quat_t<T>& q)
+		{
 			auto tmp = q;
 			conjugate(tmp);
 			return tmp;
@@ -333,7 +376,9 @@ namespace ove {
 		/**
 		 * Euler Angles
 		 */
-		template <typename T> inline quat_t<T> eulerAngles(const vec_t<T, 3u>& v) {
+		template <typename T>
+		inline quat_t<T> eulerAngles(const vec_t<T, 3u>& v)
+		{
 			const T hax = deg2rad(v.x * (T)0.5);
 			const T hay = deg2rad(v.y * (T)0.5);
 			const T haz = deg2rad(v.z * (T)0.5);
@@ -359,7 +404,9 @@ namespace ove {
 		/**
 		 * Axis-Angle
 		 */
-		template <typename T> inline quat_t<T> axisAngle(const vec_t<T, 3u>& v, T a) {
+		template <typename T>
+		inline quat_t<T> axisAngle(const vec_t<T, 3u>& v, T a)
+		{
 			const T hrad = deg2rad(a) * (T)0.5;
 			const T sa = std::sin(hrad * (T)2.0);
 
@@ -374,7 +421,9 @@ namespace ove {
 		/**
 		 * Matrix transform
 		 */
-		template <typename T> inline mat_t<T, 4u, 4u> translate(const vec_t<T, 3u>& v) {
+		template <typename T>
+		inline mat_t<T, 4u, 4u> translate(const vec_t<T, 3u>& v)
+		{
 			mat_t<T, 4u, 4u> res;
 			res.m[3][0] = v.x;
 			res.m[3][1] = v.y;
@@ -382,7 +431,9 @@ namespace ove {
 			return res;
 		}
 
-		template <typename T> inline mat_t<T, 4u, 4u> rotate(const vec_t<T, 3u>& v) {
+		template <typename T>
+		inline mat_t<T, 4u, 4u> rotate(const vec_t<T, 3u>& v)
+		{
 			const T ax = deg2rad(v.x);
 			const T ay = deg2rad(v.y);
 			const T az = deg2rad(v.z);
@@ -408,7 +459,8 @@ namespace ove {
 		}
 
 		template <typename T>
-		inline mat_t<T, 4u, 4u> rotate(T a, const vec_t<T, 3u>& v) {
+		inline mat_t<T, 4u, 4u> rotate(T a, const vec_t<T, 3u>& v)
+		{
 			const T rad = deg2rad(a);
 			const T c = std::cos(rad);
 			const T s = std::sin(rad);
@@ -437,7 +489,9 @@ namespace ove {
 			return res;
 		}
 
-		template <typename T> inline mat_t<T, 4u, 4u> rotate(const quat_t<T>& q) {
+		template <typename T>
+		inline mat_t<T, 4u, 4u> rotate(const quat_t<T>& q)
+		{
 			const T sqw = q.w * q.w;
 			const T sqx = q.x * q.x;
 			const T sqy = q.y * q.y;
@@ -472,7 +526,9 @@ namespace ove {
 			return res;
 		}
 
-		template <typename T> inline mat_t<T, 4u, 4u> scale(const vec_t<T, 3u>& v) {
+		template <typename T>
+		inline mat_t<T, 4u, 4u> scale(const vec_t<T, 3u>& v)
+		{
 			mat_t<T, 4u, 4u> res;
 			res.m[0][0] = v.x;
 			res.m[1][1] = v.y;
@@ -480,7 +536,9 @@ namespace ove {
 			return res;
 		}
 
-		template <typename T> inline mat_t<T, 4u, 4u> scale(T s) {
+		template <typename T>
+		inline mat_t<T, 4u, 4u> scale(T s)
+		{
 			mat_t<T, 4u, 4u> res;
 			res.m[0][0] = s;
 			res.m[1][1] = s;
@@ -492,9 +550,8 @@ namespace ove {
 		 * Look At
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> lookAt(const vec_t<T, 3u>& eye,
-			const vec_t<T, 3u>& center,
-			const vec_t<T, 3u>& up) {
+		inline mat_t<T, 4u, 4u> lookAt(const vec_t<T, 3u>& eye, const vec_t<T, 3u>& center, const vec_t<T, 3u>& up)
+		{
 			const vec_t<T, 3u> k(normalized(center - eye));
 			const vec_t<T, 3u> i(normalized(cross(k, up)));
 			const vec_t<T, 3u> j(cross(i, k));
@@ -522,11 +579,11 @@ namespace ove {
 		 * Orthographic
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> orthographic(T left, T right, T top, T bottom, T near,
-			T far) {
+		inline mat_t<T, 4u, 4u> orthographic(T left, T right, T top, T bottom, T znear, T zfar)
+		{
 			const T sx = right - left;
 			const T sy = top - bottom;
-			const T sz = far - near;
+			const T sz = zfar - znear;
 
 			mat_t<T, 4u, 4u> res;
 			res.m[0][0] = (T)2.0 / sx;
@@ -535,7 +592,7 @@ namespace ove {
 
 			res.m[3][0] = -(right + left) / sx;
 			res.m[3][1] = -(top + bottom) / sy;
-			res.m[3][2] = -(far + near) / sz;
+			res.m[3][2] = -(zfar + znear) / sz;
 			return res;
 		}
 
@@ -543,24 +600,24 @@ namespace ove {
 		 * Frustum
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> frustum(T left, T right, T top, T bottom, T near,
-			T far) {
+		inline mat_t<T, 4u, 4u> frustum(T left, T right, T top, T bottom, T znear, T zfar)
+		{
 			const auto zero = static_cast<T>(0.0);
 			const auto one = static_cast<T>(1.0);
 			const auto two = static_cast<T>(2.0);
 
 			const T sx = right - left;
 			const T sy = top - bottom;
-			const T sz = far - near;
+			const T sz = zfar - znear;
 
 			mat_t<T, 4u, 4u> res(zero);
-			res.m[0][0] = two * near / sx;
-			res.m[1][1] = two * near / sy;
+			res.m[0][0] = two * znear / sx;
+			res.m[1][1] = two * znear / sy;
 			res.m[2][0] = right + left / sx;
 			res.m[2][1] = top + bottom / sy;
-			res.m[2][2] = -(far + near) / sz;
+			res.m[2][2] = -(zfar + znear) / sz;
 			res.m[2][3] = -one;
-			res.m[3][2] = -two * far * near / sz;
+			res.m[3][2] = -two * zfar * znear / sz;
 			return res;
 		}
 
@@ -568,7 +625,8 @@ namespace ove {
 		 * Perspective
 		 */
 		template <typename T>
-		inline mat_t<T, 4u, 4u> perspective(T aspect, T fov, T near, T far) {
+		inline mat_t<T, 4u, 4u> perspective(T aspect, T fov, T znear, T zfar)
+		{
 			const auto one = static_cast<T>(1.0);
 			const auto half = static_cast<T>(0.5);
 
@@ -582,20 +640,22 @@ namespace ove {
 			mat_t<T, 4u, 4u> res(T(0));
 			res.m[0][0] = one / (aspect * htan);
 			res.m[1][1] = one / (htan);
-			res.m[2][2] = far / (near - far);
+			res.m[2][2] = zfar / (znear - zfar);
 			res.m[2][3] = -one;
-			res.m[3][2] = -(far * near) / (far - near);
+			res.m[3][2] = -(zfar * znear) / (zfar - znear);
 			return res;
 		}
 
 		/**
 		 * Determinant
 		 */
-		template <typename T> inline T determinant(const mat_t<T, 2u, 2u>& m) {
+		template <typename T> inline T determinant(const mat_t<T, 2u, 2u>& m)
+		{
 			return m[0] * m[3] - m[1] * m[2];
 		}
 
-		template <typename T, core::u8 N> inline T determinant(const mat_t<T, N, N>& m) {
+		template <typename T, core::u8 N> inline T determinant(const mat_t<T, N, N>& m)
+		{
 			T res = 0;
 			size_t z = 0;
 			mat_t<T, N - 1, N - 1> tmp((T)0);
@@ -621,7 +681,8 @@ namespace ove {
 		/**
 		 * Invert
 		 */
-		template <typename T, core::u8 N> inline void invert(mat_t<T, N, N>& m) {
+		template <typename T, core::u8 N> inline void invert(mat_t<T, N, N>& m)
+		{
 			const T det = determinant(m);
 			ASSERT(det != 0 && "No determinant for matrix!");
 			const T idet = 1.0 / det;
@@ -630,13 +691,19 @@ namespace ove {
 			mat_t<T, N - 1, N - 1> tmp((T)0);
 			T dtmp = 0;
 			size_t z = 0;
-			for (core::u8 x = 0; x < N; ++x) {
-				for (core::u8 y = 0; y < N; ++y) {
+
+			for (core::u8 x = 0; x < N; ++x)
+			{
+				for (core::u8 y = 0; y < N; ++y)
+				{
 					z = 0;
-					for (core::u8 i = 0; i < N; ++i) {
-						for (core::u8 j = 0; j < N; ++j) {
+					for (core::u8 i = 0; i < N; ++i)
+					{
+						for (core::u8 j = 0; j < N; ++j)
+						{
 							if (i == x || j == y)
 								continue;
+
 							tmp[z++] = m.m[i][j];
 						}
 					}
@@ -653,7 +720,8 @@ namespace ove {
 		 * Inverse
 		 */
 		template <typename T, core::u8 R, core::u8 C>
-		inline mat_t<T, R, C> inverse(const mat_t<T, R, C>& m) {
+		inline mat_t<T, R, C> inverse(const mat_t<T, R, C>& m)
+		{
 			mat_t<T, R, C> res = m;
 			invert(res);
 			return res;
@@ -662,7 +730,9 @@ namespace ove {
 		/**
 		 * Transpose
 		 */
-		template <typename T, core::u8 R, core::u8 C> inline void transpose(mat_t<T, R, C>& m) {
+		template <typename T, core::u8 R, core::u8 C>
+		inline void transpose(mat_t<T, R, C>& m)
+		{
 			ASSERT(false && "TODO");
 		}
 
@@ -670,7 +740,8 @@ namespace ove {
 		 * Transposed
 		 */
 		template <typename T, core::u8 R, core::u8 C>
-		inline mat_t<T, R, C> transposed(const mat_t<T, R, C>& m) {
+		inline mat_t<T, R, C> transposed(const mat_t<T, R, C>& m)
+		{
 			mat_t<T, R, C> res = m;
 			transpose(res);
 			return res;
