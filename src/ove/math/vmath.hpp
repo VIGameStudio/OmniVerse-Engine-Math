@@ -18,14 +18,16 @@ namespace ove
 		/**
 		 * Operator +
 		 */
-		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator+(const vec_t<T, S>& l, const vec_t<T, S>& r);
+		template <typename T1, typename T2, core::u8 S>
+		inline auto operator+(const vec_t<T1, S>& l, const vec_t<T2, S>& r)
+			->vec_t<decltype(l.x + r.x), S>;
 
 		/**
 		 * Operator -
 		 */
-		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator-(const vec_t<T, S>& l, const vec_t<T, S>& r);
+		template <typename T1, typename T2, core::u8 S>
+		inline auto operator-(const vec_t<T1, S>& l, const vec_t<T2, S>& r)
+			->vec_t<decltype(l.x - r.x), S>;
 
 		template <typename T, core::u8 S>
 		inline vec_t<T, S> operator-(const vec_t<T, S>& r);

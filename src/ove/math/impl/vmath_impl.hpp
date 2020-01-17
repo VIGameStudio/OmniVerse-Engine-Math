@@ -13,10 +13,11 @@ namespace ove
 		/**
 		 * Operator +
 		 */
-		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator+(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		template <typename T1, typename T2, core::u8 S>
+		inline auto operator+(const vec_t<T1, S>& l, const vec_t<T2, S>& r)
+			->vec_t<decltype(l.x + r.x), S>
 		{
-			vec_t<T, S> res;
+			vec_t<decltype(l.x + r.x), S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] + r.data[i];
 			return res;
@@ -25,16 +26,18 @@ namespace ove
 		/**
 		 * Operator -
 		 */
-		template <typename T, core::u8 S>
-		inline vec_t<T, S> operator-(const vec_t<T, S>& l, const vec_t<T, S>& r)
+		template <typename T1, typename T2, core::u8 S>
+		inline auto operator-(const vec_t<T1, S>& l, const vec_t<T2, S>& r)
+			->vec_t<decltype(l.x - r.x), S>
 		{
-			vec_t<T, S> res;
+			vec_t<decltype(l.x - r.x), S> res;
 			for (core::u8 i = 0; i < S; ++i)
 				res.data[i] = l.data[i] - r.data[i];
 			return res;
 		}
 
-		template <typename T, core::u8 S> inline vec_t<T, S> operator-(const vec_t<T, S>& r)
+		template <typename T, core::u8 S>
+		inline vec_t<T, S> operator-(const vec_t<T, S>& r)
 		{
 			return vec_t<T, S>(-r.x, -r.y, -r.z);
 		}

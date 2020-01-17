@@ -13,14 +13,6 @@ namespace ove
 		struct vec_t;
 
 		template <typename R>
-		using vec1_t = vec_t<R, 1u>;
-
-		using vec1u = vec1_t<core::u32>;
-		using vec1i = vec1_t<core::i32>;
-		using vec1f = vec1_t<core::f32>;
-		using vec1d = vec1_t<core::f64>;
-
-		template <typename R>
 		using vec2_t = vec_t<R, 2u>;
 		using vec2u = vec2_t<core::u32>;
 		using vec2i = vec2_t<core::i32>;
@@ -78,49 +70,6 @@ namespace ove
 		};
 
 		template <typename R>
-		struct vec_t<R, 1u>
-		{
-		public:
-			using type = vec_t<R, 1u>;
-			using real = R;
-			static const core::u8 Dim = 1u;
-			static constexpr type zero() { return type(); }
-
-		public:
-			vec_t()
-				: data{ 0 }
-			{
-			}
-
-			vec_t(real v)
-				: data{ v }
-			{
-			}
-
-		public:
-			inline const real* const vptr() const { return &data[0]; }
-
-			inline real& operator[](core::u8 i) { return data[i]; }
-
-			inline void operator()(real x) { this->x = x; }
-
-			union
-			{
-				real data[Dim];
-				struct
-				{
-					real x;
-				};
-			};
-
-			friend std::ostream& operator<< (std::ostream& os, const type& v)
-			{
-				os << "[ x: " << v.x << " ]";
-				return os;
-			}
-		};
-
-		template <typename R>
 		struct vec_t<R, 2u>
 		{
 			using type = vec_t<R, 2u>;
@@ -161,6 +110,13 @@ namespace ove
 					real y;
 				};
 			};
+
+			template <typename U>
+			void operator= (const vec_t<U, Dim>& v)
+			{
+				for (core::u8 i = 0; i < Dim; ++i)
+					data[i] = v.data[i];
+			}
 
 			friend std::ostream& operator<< (std::ostream& os, const type& v)
 			{
