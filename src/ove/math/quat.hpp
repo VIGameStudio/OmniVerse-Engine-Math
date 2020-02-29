@@ -1,6 +1,9 @@
 #pragma once
 
-#include "impl/vmath_impl.hpp"
+#include <ove/core/util/types.hpp>
+#include <ove/math/op/vec_op.hpp>
+#include <ove/math/op/quat_op.hpp>
+#include <ove/math/op/trx_op.hpp>
 
 namespace ove
 {
